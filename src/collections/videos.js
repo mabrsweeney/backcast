@@ -4,7 +4,7 @@ var Videos = Backbone.Collection.extend({
 
   search: function(query) {
     var that = this;
-    return Backbone.ajax({
+    Backbone.ajax({
       url: 'https://www.googleapis.com/youtube/v3/search',
       type: 'GET',
       dataType: 'json',
@@ -30,7 +30,6 @@ var Videos = Backbone.Collection.extend({
   parse: function(data) {
     this.reset(data.items);
     return data.items;
-    //this.add(data.items);
   }
 
 });
