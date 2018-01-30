@@ -1,20 +1,26 @@
 var SearchView = Backbone.View.extend({
   
   events: {
-    'click button': 'doSearch',
+    'click button': 'handleClick',
     'keyup input': 'handleKeyUp'
   },
   
   handleKeyUp: function(e) {
     if (e.keyCode === 13) {
-      this.doSearch();
+      $('input').val('');
+      return;
     }
+    this.doSearch();
+  },
+  
+  handleClick: function() {
+    $('input').val('');
+    this.doSearch();
   },
   
   doSearch: function() {
     var query = $('input').val();
-    $('input').val('');
-    this.collection.search(query);
+    this.collection.debounceSearch(query);
   },
   
   render: function() {
