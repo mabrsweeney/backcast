@@ -30,6 +30,10 @@ var Videos = Backbone.Collection.extend({
   parse: function(data) {
     this.reset(data.items);
     return data.items;
-  }
+  },
+  
+  debounceSearch: _.debounce(function(query) {
+    this.search(query);
+  }, 500)
 
 });
