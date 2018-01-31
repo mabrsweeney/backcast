@@ -6,8 +6,10 @@ var VideoPlayerView = Backbone.View.extend({
       this.model = element;
       this.$el.html('<div class="loading">Please wait...</div>');
       this.render();
-      var frame = $('iframe').attr('src') + '?autoplay=1';
-      $('iframe').attr('src', frame);
+      if ($('.autoplay').find('span').text() === 'on'){
+        var frame = $('iframe').attr('src') + '?autoplay=1';
+        $('iframe').attr('src', frame);
+      }
     }, this);
     
     this.listenTo(this.collection, 'sync', function(element) {
