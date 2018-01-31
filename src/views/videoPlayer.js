@@ -6,6 +6,8 @@ var VideoPlayerView = Backbone.View.extend({
       this.model = element;
       this.$el.html('<div class="loading">Please wait...</div>');
       this.render();
+      console.log($('.autoplay').find('span').text() === 'on');
+      console.log($('.autoplay').find('span').text());
       if ($('.autoplay').find('span').text() === 'on'){
         var frame = $('iframe').attr('src') + '?autoplay=1';
         $('iframe').attr('src', frame);
