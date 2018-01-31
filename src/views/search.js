@@ -1,8 +1,9 @@
 var SearchView = Backbone.View.extend({
   
   events: {
-    'click button': 'handleClick',
-    'keyup input': 'handleKeyUp'
+    'click .sb': 'handleClick',
+    'keyup input': 'handleKeyUp',
+    'click .autoplay': 'handleAutoPlay'
   },
   
   handleKeyUp: function(e) {
@@ -11,6 +12,15 @@ var SearchView = Backbone.View.extend({
       return;
     }
     this.doSearch();
+  },
+  
+  handleAutoPlay: function() {
+    if ($('.autoplay').find('span').text() === 'on') {
+      $('.autoplay').find('span').text('off'); 
+    } else {
+      $('.autoplay').find('span').text('on');
+    }
+
   },
   
   handleClick: function() {
